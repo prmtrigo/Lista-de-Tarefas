@@ -74,7 +74,6 @@ def test_excluir_tarefa():
     assert response.status_code == 200
     assert response.json() == {"message": "Tarefa excluída com sucesso"}  # Altere para "message" para consistência
 
-    # Verificar que a tarefa foi realmente excluída
     response = client.get(f"/tarefas/{tarefa_id}")
     assert response.status_code == 404
     assert response.json() == {"detail": "Tarefa não encontrada"}
