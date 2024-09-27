@@ -33,7 +33,7 @@ def test_obter_tarefa():
 
 # OBTER UMA TAREFA QUE NÃO EXISTE
 def test_obter_tarefa_nao_existente():
-    response = client.get("/tarefas/999")  # ID que não existe
+    response = client.get("/tarefas/999")
     assert response.status_code == 404
     assert response.json() == {"detail": "Tarefa não encontrada"}
 
@@ -72,7 +72,7 @@ def test_excluir_tarefa():
 
     response = client.delete(f"/tarefas/{tarefa_id}")
     assert response.status_code == 200
-    assert response.json() == {"message": "Tarefa excluída com sucesso"}  # Altere para "message" para consistência
+    assert response.json() == {"message": "Tarefa excluída com sucesso"} 
 
     response = client.get(f"/tarefas/{tarefa_id}")
     assert response.status_code == 404
@@ -80,6 +80,6 @@ def test_excluir_tarefa():
 
 # EXCLUIR UMA TAREFA QUE NÃO EXISTE
 def test_excluir_tarefa_nao_existente():
-    response = client.delete("/tarefas/999")  # ID que não existe
+    response = client.delete("/tarefas/999")
     assert response.status_code == 404
     assert response.json() == {"detail": "Tarefa não encontrada"}
