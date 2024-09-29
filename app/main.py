@@ -12,5 +12,5 @@ app = FastAPI()
 async def read_root():
     return {"message": "Bem-vindo à API de Tarefas!"}
 
-# Registrar as rotas
+# ROTAS
 app.include_router(tarefas_router)
