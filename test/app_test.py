@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
-from main import app, Tarefa 
+import app.main as main
+from app.main import app
 
 client = TestClient(app)
 
@@ -9,7 +10,7 @@ def test_criar_tarefa():
     response = client.post("/tarefas/", json={
         "nome": "Tarefa 1", 
         "descricao": "Descrição da tarefa 1"
-        })
+    })
     assert response.status_code == 200
     assert response.json()["nome"] == "Tarefa 1"
     assert response.json()["descricao"] == "Descrição da tarefa 1"
@@ -23,7 +24,7 @@ def test_listar_tarefas():
 
 # OBTER UMA TAREFA POR ID
 def test_obter_tarefa():
-    criar_response = client.post("/tarefas/", json={"nome": "Tarefa 2"})
+    criar_response = client.post("/tarefas/", json={"nome": "Tarefa 2", "descricao": "Descrição da tarefa 2"})
     tarefa_id = criar_response.json()["id"]
 
     response = client.get(f"/tarefas/{tarefa_id}")
@@ -42,7 +43,7 @@ def test_atualizar_tarefa():
     criar_response = client.post("/tarefas/", json={
         "nome": "Tarefa para Atualizar", 
         "descricao": "Descrição original"
-        })
+    })
     tarefa_id = criar_response.json()["id"]
 
     atualizar_response = client.put(f"/tarefas/{tarefa_id}", json={
@@ -61,13 +62,13 @@ def test_atualizar_tarefa_nao_existente():
     response = client.put("/tarefas/999", json={
         "nome": "Tarefa Atualizada", 
         "descricao": "Nova descrição"
-        })
+    })
     assert response.status_code == 404
     assert response.json() == {"detail": "Tarefa não encontrada"}
 
 # EXCLUIR TAREFA
 def test_excluir_tarefa():
-    criar_response = client.post("/tarefas/", json={"nome": "Tarefa 4"})
+    criar_response = client.post("/tarefas/", json={"nome": "Tarefa 4", "descricao": "Descrição para excluir"})
     tarefa_id = criar_response.json()["id"]
 
     response = client.delete(f"/tarefas/{tarefa_id}")
