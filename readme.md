@@ -16,12 +16,13 @@ A primeira delas é que essa técnica pode facilitar a manutenção. Se um módu
 
 A segunda é a organização do código, uma vez que a modularização torna o código mais fácil de compreender, dividindo as responsabilidades.
 
+Assim, utilizei a estratégia do "dividir para conquistar", tornando o código mais legível, bem estruturado e adaptável, seja a mudanças, seja também a manutenções em caso de falha
 
 ### Desafios
 
 Sem dúvida, o maior desafio para mim foi a integração com o banco de dados SQLite. Eu já tinha feito alguns CRUDs antes, mas tinha algumas dúvidas quanto à integração com o banco de dados e tive que estudar bastante.
 
-Assisti a alguns tutoriais na internet que me ajudaram a entender a integração com banco de dados e foi mais fácil para compreender
+Assisti à alguns tutoriais na internet que me ajudaram a entender a integração com banco de dados e foi mais fácil para compreender
 
 [https://www.youtube.com/watch?v=zzOwU41UjTM]
 [https://www.youtube.com/watch?v=Z0jbO8WT0Jc]
